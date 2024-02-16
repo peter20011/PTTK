@@ -1,7 +1,7 @@
 import React from "react";
 import { router } from "expo-router";
-import { Pressable, StyleSheet,FlatList, View, Dimensions, SafeAreaView, Image, Text, Touchable, ScrollView } from "react-native";
-
+import { Pressable, StyleSheet,FlatList, View, SafeAreaView, Image, Linking} from "react-native";
+import NetInfo from "@react-native-community/netinfo";
 
 const menuData = [
   {id: '1', image: require("../assets/Regulamin.png"), route: "/regulamin"},
@@ -22,10 +22,40 @@ const menuData = [
 ];
 
 export default function Home(){
+
+  const openLink = async (item) => {
+    const isConnected = await NetInfo.fetch().then(state => state.isConnected);
+    if (isConnected) {
+        if (item.route === '/facebook') {
+            Linking.openURL('https://www.facebook.com/pieszapielgrzymkatarnowska');
+        }else if (item.route === '/instagram') {
+            Linking.openURL('https://www.instagram.com/pptarnowska/');
+        }else if (item.route === '/youtube') {
+            Linking.openURL('https://www.youtube.com/@pptarnowska/streams');
+        } else if (item.route === '/strona') {
+            Linking.openURL('https://pielgrzymkatarnowska.pl/');
+        }
+        else {
+            // Obsługa innych przekierowań wewnątrz aplikacji
+            router.navigate(item.route);
+        }
+    } else {
+        Alert.alert(
+            'Brak połączenia z internetem',
+            'Sprawdź swoje połączenie z internetem i spróbuj ponownie.',
+            [{ text: 'OK', onPress: () => console.log('OK Pressed'), style: 'cancel' }],
+            {
+                cancelable: true,
+                onDismiss: () => console.log('Alert dismissed'),
+            }
+        );
+    }
+};
+
  
     const renderItem = ({item}) => (
         <View style={styles.iconWrapper} >
-            <Pressable onPress={() => router.navigate(item.route)}> 
+            <Pressable onPress={() => openLink(item)}> 
                 <Image source={item.image} style={styles.icon} />
             </Pressable>    
         </View>
