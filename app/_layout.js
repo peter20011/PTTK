@@ -1,4 +1,5 @@
 import { Stack } from "expo-router";
+import Home from "./home";
 
 
 export default function Layout(){
@@ -6,21 +7,21 @@ export default function Layout(){
         <Stack>
             <Stack.Screen name="home" options={{headerShown:false}} />
             <Stack.Screen name="index" options={{headerShown:false}} />
-            <Stack.Screen name="regulamin" options={{headerShown:true}} />
-            <Stack.Screen name="nauka" options={{headerShown:true}} />
-            <Stack.Screen name="postac-dnia" options={{headerShown:true}} />
-            <Stack.Screen name="trasa" options={{headerShown:true}} />
-            <Stack.Screen name="spiewnik" options={{headerShown:true}} />
-            <Stack.Screen name="modlitwa-wieczorna" options={{headerShown:true}} />
-            <Stack.Screen name="litanie" options={{headerShown:true}} />
-            <Stack.Screen name="miejsca-noclegowe" options={{headerShown:true}} />
-            <Stack.Screen name="do-pobrania" options={{headerShown:true}} />
-            <Stack.Screen name="ramowka" options={{headerShown:true}} />
-            <Stack.Screen name="kontakty" options={{headerShown:true}} />
-            <Stack.Screen name="strona" options={{headerShown:true}} />
-            <Stack.Screen name="facebook" options={{headerShown:true}} />
-            <Stack.Screen name="instagram" options={{headerShown:true}} />
-            <Stack.Screen name="youtube" options={{headerShown:true}} />
+            <Stack.Screen name="regulamin" options={{headerShown:true, title: "REGULAMIN", headerTitleAlign:'center',headerTitleStyle: {fontWeight:'bold'}}} />
+            <Stack.Screen name="nauka" options={{headerShown:true, title:'NAUKA', headerTitleAlign:'center', headerTitleStyle: {fontWeight:'bold'}}} />
+            <Stack.Screen name="postac-dnia" options={{headerShown:true,title:'POSTAĆ DNIA', headerTitleAlign:'center', headerTitleStyle:{fontWeight:'bold'}}} />
+            <Stack.Screen name="trasa" options={{headerShown:true, title:'TRASA' ,headerTitleAlign:'center', headerTitleStyle:{fontWeight:'bold'}}} />
+            <Stack.Screen name="spiewnik" options={{headerShown:true,title:'ŚPIEWNIK' ,headerTitleAlign:'center', headerTitleStyle:{fontWeight:'bold'}}} />
+            <Stack.Screen name="modlitwa-wieczorna" options={{headerShown:true, title:'MODLITWA WIECZORNA' , headerTitleAlign:'center',headerTitleStyle:{fontWeight:'bold'}}} />
+            <Stack.Screen name="litanie" options={{headerShown:true, title:'LITANIE' ,headerTitleAlign:'center',headerTitleStyle:{fontWeight:'bold'}}} />
+            <Stack.Screen name="miejsca-noclegowe" options={{headerShown:true, title:'MIEJSCA NOCLEGOWE' ,headerTitleAlign:'center',headerTitleStyle:{fontWeight:'bold'}}} />
+            <Stack.Screen name="do-pobrania" options={{headerShown:true, title:'DO POBRANIA' ,headerTitleAlign:'center',headerTitleStyle:{fontWeight:'bold'}}} />
+            <Stack.Screen name="ramowka" options={{headerShown:true, title:'RAMÓWKA RDN',headerTitleAlign:'center',headerTitleStyle:{fontWeight:'bold'}}} />
+            <Stack.Screen name="kontakty" options={{headerShown:true, title:'KONTAKTY',headerTitleAlign:'center',headerTitleStyle:{fontWeight:'bold'}}} />
+            <Stack.Screen name="strona" options={{headerShown:false}} />
+            <Stack.Screen name="facebook" options={{headerShown:false}} />
+            <Stack.Screen name="instagram" options={{headerShown:false}} />
+            <Stack.Screen name="youtube" options={{headerShown:false}} />
         </Stack>
     )
 }
