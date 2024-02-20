@@ -42,6 +42,7 @@ export default function Ramowka(){
         <Text style={styles.scheduleText}>24.08. - różaniec - gr. 2, apel - gr. 19</Text>
         <Text/>
         <Text/>
+        <Text/>
     </ScrollView>
     )
 };
