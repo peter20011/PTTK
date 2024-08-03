@@ -80,8 +80,6 @@ export default function Kontakty() {
         <Text style={styles.scheduleText}>26. Św. Katarzyna - ks. Paweł Łebski: 507 602 277</Text>
   
         <Text/>
-        <Text/>
-        <Text/>
       </ScrollView>
     );
   }
@@ -90,7 +88,7 @@ const styles = StyleSheet.create({
     container: {
       paddingTop: '4%',
       paddingHorizontal: '4%',
-      paddingBottom: '10%',
+      paddingBottom: '5%',
       flex: 1,
       backgroundColor: '#FFFFFF',
     },
@@ -103,12 +101,7 @@ const styles = StyleSheet.create({
     },
     scheduleText: {
       textAlign: 'center',
-      fontSize: 17,
-      marginBottom: 5,
-    },
-    info:{
-        fontSize: 17,
-        marginBottom: 5,
-        textAlign: 'left',
+      fontSize: 15,
+      marginBottom: 3,
     }
   });

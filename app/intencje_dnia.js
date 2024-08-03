@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
-import { day1Content } from './contents/wieczorna/day1Content';
-import { day2Content } from './contents/wieczorna/day2Content'; 
-import { day3Content } from './contents/wieczorna/day3Content';
-import { day4Content } from './contents/wieczorna/day4Content';
-import { day5Content } from './contents/wieczorna/day5Content';
-import { day6Content } from './contents/wieczorna/day6Content';
-import { day7Content } from './contents/wieczorna/day7Content';
-import { day8Content } from './contents/wieczorna/day8Content';
-
+import { day1Intention } from './contents/intencja/day1Intention';
+import { day2Intention } from './contents/intencja/day2Intention'; 
+import { day3Intention } from './contents/intencja/day3Intention';
+import { day4Intention } from './contents/intencja/day4Intention';
+import { day5Intention } from './contents/intencja/day5Intention';
+import { day6Intention } from './contents/intencja/day6Intention';
+import { day7Intention } from './contents/intencja/day7Intention';
+import { day8Intention } from './contents/intencja/day8Intention';
 
 const DayTab = ({ day, onPress, isSelected }) => (
   <TouchableOpacity style={styles.tab} onPress={onPress}>
@@ -32,7 +31,7 @@ const DayContent = ({ children, isVisible }) => {
   );
 };
 
-const ModlitwaWieczorna = () => {
+const IntencjaDnia = () => {
   const [selectedDay, setSelectedDay] = useState(null);
 
   const handlePress = (day) => {
@@ -40,14 +39,14 @@ const ModlitwaWieczorna = () => {
   };
 
   const dayContents = {
-    'Dzień 1': day1Content,
-    'Dzień 2': day2Content,
-    'Dzień 3': day3Content,
-    'Dzień 4': day4Content,
-    'Dzień 5': day5Content,
-    'Dzień 6': day6Content,
-    'Dzień 7': day7Content,
-    'Dzień 8': day8Content,
+    'Dzień 1': day1Intention,
+    'Dzień 2': day2Intention,
+    'Dzień 3': day3Intention,
+    'Dzień 4': day4Intention,
+    'Dzień 5': day5Intention,
+    'Dzień 6': day6Intention,
+    'Dzień 7': day7Intention,
+    'Dzień 8': day8Intention
   };
 
   return (
@@ -102,4 +101,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ModlitwaWieczorna;
+export default IntencjaDnia;

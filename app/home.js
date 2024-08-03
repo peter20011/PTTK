@@ -11,14 +11,15 @@ const menuData = [
   {id: '5', image: require("./../assets/Spiewnik.png"), route: "/spiewnik"},
   {id: '6', image: require("./../assets/ModlitwaWieczorna.png"), route: "/modlitwa-wieczorna"},
   {id: '7', image: require("./../assets/litanie.png"), route: "/litanie"},
-  {id: '8', image: require("./../assets/MiejscaNoclegowe.png"), route: "/miejsca-noclegowe"},
-  {id: '9', image: require("./../assets/do-pobrania.png"), route: "/do-pobrania"},
-  {id: '10', image: require("./../assets/ramowka.png"), route: "/ramowka"},
-  {id: '11', image: require("./../assets/Kontakty.png"), route: "/kontakty"},
-  {id: '12', image: require("./../assets/strona.png"), route: "/strona"},
-  {id: '13', image: require("./../assets/Facebook.png"), route: "/facebook"},
-  {id: '14', image: require("./../assets/Instagram.png"), route: "/instagram"},
-  {id: '15', image: require("./../assets/Youtube.png"), route: "/youtube"}
+  {id: '8', image: require("./../assets/INTENCJA_DNIA.png"), route: "/intencje_dnia"},
+  {id: '9', image: require("./../assets/MiejscaNoclegowe.png"), route: "/miejsca-noclegowe"},
+  {id: '10', image: require("./../assets/do-pobrania.png"), route: "/do-pobrania"},
+  {id: '11', image: require("./../assets/ramowka.png"), route: "/ramowka"},
+  {id: '12', image: require("./../assets/Kontakty.png"), route: "/kontakty"},
+  {id: '13', image: require("./../assets/strona.png"), route: "/strona"},
+  {id: '14', image: require("./../assets/Facebook.png"), route: "/facebook"},
+  {id: '15', image: require("./../assets/Instagram.png"), route: "/instagram"},
+  {id: '16', image: require("./../assets/Youtube.png"), route: "/youtube"},
 ];
 
 export default function Home(){
