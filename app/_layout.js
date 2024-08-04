@@ -14,7 +14,7 @@ export default function Layout(){
             <Stack.Screen name="spiewnik" options={{headerShown:true,title:'ŚPIEWNIK' ,headerTitleAlign:'center', headerTitleStyle:{fontWeight:'bold'}}} />
             <Stack.Screen name="modlitwa-wieczorna" options={{headerShown:true, title:'MODLITWA WIECZORNA' , headerTitleAlign:'center',headerTitleStyle:{fontWeight:'bold'}}} />
             <Stack.Screen name="intencje_dnia" options={{headerShown:true, title:'INTENCJA DNIA' ,headerTitleAlign:'center',headerTitleStyle:{fontWeight:'bold'}}} />
-            <Stack.Screen name="litanie" options={{headerShown:true, title:'LITANIE' ,headerTitleAlign:'center',headerTitleStyle:{fontWeight:'bold'}}} />
+            <Stack.Screen name="litanie" options={{headerShown:true, title:'LITANIE I KRAKOWIOKI' ,headerTitleAlign:'center',headerTitleStyle:{fontWeight:'bold'}}} />
             <Stack.Screen name="miejsca-noclegowe" options={{headerShown:true, title:'MIEJSCA NOCLEGOWE' ,headerTitleAlign:'center',headerTitleStyle:{fontWeight:'bold'}}} />
             <Stack.Screen name="do-pobrania" options={{headerShown:true, title:'DO POBRANIA' ,headerTitleAlign:'center',headerTitleStyle:{fontWeight:'bold'}}} />
             <Stack.Screen name="ramowka" options={{headerShown:true, title:'RAMÓWKA RDN',headerTitleAlign:'center',headerTitleStyle:{fontWeight:'bold'}}} />
