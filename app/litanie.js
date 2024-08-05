@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, ActivityIndicator } from 'react-native';
 import { Audio } from 'expo-av';
 import Slider from '@react-native-community/slider';
 import { litania1 } from './contents/litanie/litania1';
@@ -8,8 +8,6 @@ import { litania3 } from './contents/litanie/litania3';
 import { litania4 } from './contents/litanie/litania4';
 import { krakowiok_pielgrzymkowy } from './contents/litanie/krakowiok-pielgrzymkowy';
 import { krakowiok_wedrowny } from './contents/litanie/krakowiok-wedrowny';
-
-// Static imports for audio files
 import KrakowiokWedrownyAudio from '../assets/music/Krakowiok_wedrowny.mp3';
 import KrakowiokPielgrzymkowyAudio from '../assets/music/Krakowiok_literacki.mp3';
 
@@ -25,8 +23,7 @@ const DayTab = ({ day, onPress, isSelected }) => (
   </TouchableOpacity>
 );
 
-const DayContent = ({ children, isVisible, audioFile, isPlaying, onPlay, onPause }) => {
-  const [sound, setSound] = useState(null);
+const DayContent = ({ children, isVisible, audio, isPlaying, onPlay, onPause, loading }) => {
   const [localIsPlaying, setLocalIsPlaying] = useState(false);
   const [position, setPosition] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -34,14 +31,14 @@ const DayContent = ({ children, isVisible, audioFile, isPlaying, onPlay, onPause
 
   useEffect(() => {
     return () => {
-      if (sound) {
-        sound.unloadAsync();
+      if (audio) {
+        audio.unloadAsync();
       }
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
     };
-  }, [sound]);
+  }, [audio]);
 
   useEffect(() => {
     if (!isPlaying && localIsPlaying) {
@@ -51,23 +48,15 @@ const DayContent = ({ children, isVisible, audioFile, isPlaying, onPlay, onPause
 
   const playPauseAudio = async () => {
     if (!localIsPlaying) {
-      if (sound === null) {
-        const { sound: newSound, status } = await Audio.Sound.createAsync(
-          audioFile,
-          { shouldPlay: true }
-        );
-        setSound(newSound);
+      if (audio) {
+        const status = await audio.playAsync();
         setDuration(status.durationMillis);
-        onPlay(newSound);
-        startUpdateInterval(newSound);
-      } else {
-        onPlay(sound);
-        await sound.playAsync();
-        startUpdateInterval(sound);
+        onPlay(audio);
+        startUpdateInterval(audio);
+        setLocalIsPlaying(true);
       }
-      setLocalIsPlaying(true);
     } else {
-      await sound.pauseAsync();
+      await audio.pauseAsync();
       onPause();
       setLocalIsPlaying(false);
       if (intervalRef.current) {
@@ -83,16 +72,23 @@ const DayContent = ({ children, isVisible, audioFile, isPlaying, onPlay, onPause
         if (status.isLoaded) {
           setPosition(status.positionMillis);
           setDuration(status.durationMillis);
+
+          // Reset the audio when it reaches the end
+          if (formatTime(status.positionMillis) === formatTime(status.durationMillis)) {
+            await audio.setPositionAsync(0);
+            setPosition(0);
+            setLocalIsPlaying(false);
+          }
         }
       }
     }, 1000);
   };
 
   const onSlidingComplete = async (value) => {
-    if (sound !== null) {
-      const status = await sound.getStatusAsync();
+    if (audio) {
+      const status = await audio.getStatusAsync();
       if (status.isLoaded) {
-        await sound.setPositionAsync(value);
+        await audio.setPositionAsync(value);
         setPosition(value);
       }
     }
@@ -104,8 +100,8 @@ const DayContent = ({ children, isVisible, audioFile, isPlaying, onPlay, onPause
 
   return (
     <View style={styles.content}>
-      {audioFile && (
-        <View>
+      {audio ? (
+        <>
           <Slider
             style={styles.slider}
             minimumValue={0}
@@ -118,10 +114,12 @@ const DayContent = ({ children, isVisible, audioFile, isPlaying, onPlay, onPause
             <Text style={styles.timeText}>{formatTime(duration)}</Text>
           </View>
           <TouchableOpacity onPress={playPauseAudio} style={styles.audioControl}>
-            <Text>{localIsPlaying ? 'Pause' : 'Play'}</Text>
+            <Text style={styles.audioControlText}>{localIsPlaying ? 'PAUSE' : 'PLAY'}</Text>
           </TouchableOpacity>
-        </View>
-      )}
+        </>
+      ) : loading ? (
+        <ActivityIndicator size="large" color="#0000ff" />
+      ) : null}
       {children.split('\n').map((line, index) => (
         <Text key={index} style={styles.contentText}>
           {line}
@@ -135,9 +133,45 @@ const Litanie = () => {
   const [selectedDay, setSelectedDay] = useState(null);
   const [currentSound, setCurrentSound] = useState(null);
   const [playingDay, setPlayingDay] = useState(null);
+  const [preloadedSounds, setPreloadedSounds] = useState({});
+  const [loading, setLoading] = useState(true);
 
-  const handlePress = (day) => {
-    setSelectedDay(selectedDay === day ? null : day);
+  useEffect(() => {
+    // Preload audio files
+    const preloadAudioFiles = async () => {
+      const sounds = {
+        'Krakowiok wędrowny': await Audio.Sound.createAsync(KrakowiokWedrownyAudio),
+        'Krakowiok pielgrzymkowy': await Audio.Sound.createAsync(KrakowiokPielgrzymkowyAudio),
+      };
+      setPreloadedSounds(sounds);
+      setLoading(false);
+    };
+    preloadAudioFiles();
+
+    return () => {
+      // Unload all preloaded sounds on component unmount
+      Object.values(preloadedSounds).forEach(({ sound }) => {
+        if (sound) {
+          sound.unloadAsync();
+        }
+      });
+    };
+  }, []);
+
+  const handlePress = async (day) => {
+    if (selectedDay === day) {
+      setSelectedDay(null);
+      if (currentSound) {
+        await currentSound.pauseAsync();
+        setPlayingDay(null);
+      }
+    } else {
+      setSelectedDay(day);
+      if (currentSound && playingDay !== day) {
+        await currentSound.stopAsync();
+        setPlayingDay(null);
+      }
+    }
   };
 
   const handlePlay = async (sound, day) => {
@@ -153,8 +187,8 @@ const Litanie = () => {
   };
 
   const dayContents = {
-    'Krakowiok wędrowny': { text: krakowiok_wedrowny, audio: KrakowiokWedrownyAudio },
-    'Krakowiok pielgrzymkowy': { text: krakowiok_pielgrzymkowy, audio: KrakowiokPielgrzymkowyAudio },
+    'Krakowiok wędrowny': { text: krakowiok_wedrowny, audio: preloadedSounds['Krakowiok wędrowny']?.sound },
+    'Krakowiok pielgrzymkowy': { text: krakowiok_pielgrzymkowy, audio: preloadedSounds['Krakowiok pielgrzymkowy']?.sound },
     'Litania do Matki Bożej Jasnogórskiej': { text: litania1, audio: null },
     'Litania do Najświętszego Serca Pana Jezusa': { text: litania2, audio: null },
     'Litania loretańska do Najświętszej Maryi Panny': { text: litania3, audio: null },
@@ -172,10 +206,11 @@ const Litanie = () => {
           />
           <DayContent
             isVisible={selectedDay === day}
-            audioFile={dayContents[day].audio}
+            audio={dayContents[day].audio}
             isPlaying={playingDay === day}
             onPlay={(sound) => handlePlay(sound, day)}
             onPause={handlePause}
+            loading={loading && dayContents[day].audio !== null}
           >
             {dayContents[day].text}
           </DayContent>
@@ -220,13 +255,18 @@ const styles = StyleSheet.create({
   audioControl: {
     marginBottom: 10,
     padding: 10,
-    backgroundColor: '#eee',
+    backgroundColor: '#2a3060',
     borderRadius: 5,
     alignItems: 'center',
   },
+  audioControlText: {
+    color: '#ffffff',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
   slider: {
     width: '100%',
-    height: 40,
+    height: 35,
   },
   timeContainer: {
     flexDirection: 'row',
