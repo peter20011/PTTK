@@ -1,4 +1,4 @@
-export const day1study = `
+export const day1Study = `
 Tegoroczne rekolekcje pielgrzymkowe przeżywamy pod hasłem: „Żyję w Kościele”. Można by pomyśleć, że staramy się przeanalizować różne wymiary działalności Kościoła. W rzeczywistości chodzi nam jednak o coś więcej. Chcemy lepiej poznać tę wspólnotę, do której zostaliśmy włączeni przez chrzest św. Chcemy na nowo się nią zafascynować. Bo jak nie zachwycić się tym, że właśnie w Kościele i przez Kościół sam Jezus obdarza nas swoją miłosierną miłością?
 
 Warto w tym momencie uświadomić sobie, jak wielkim darem jest Kościół. Pomyśl, bracie i siostro, jak wyglądałoby Twoje życie bez tych wszystkich łask, bez miłosierdzia, które Jezus ofiarował Ci i ciągle ofiarowuje w Kościele? Jaka byłaby Twoja droga do zbawienia?

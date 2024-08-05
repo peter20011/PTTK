@@ -1,4 +1,4 @@
-export const day7study =  `
+export const day7Study =  `
 Kościół jest miłosierny
 
 Mówiliśmy wczoraj, że odpowiedzią na miłosierną miłość, którą obdarza nas Chrystus, jest wypraszanie miłosierdzia dla świata i zaufanie Jezusowi. Ta nasza odpowiedź byłaby niepełna, gdyby zabrakło jeszcze jednego wymiaru – sami mamy okazywać miłosierdzie. W Ewangelii według św. Mateusza Jezus prosi nas przecież: „Chcę raczej miłosierdzia niż ofiary” (Mt 9,13). Co więcej, zwracając się do św. Faustyny, wyjaśnia, że każdy może i powinien być miłosierny: „Miłosierdzie masz okazywać zawsze i wszędzie bliźnim. Nie możesz się od tego usunąć, ani wymówić, ani uniewinnić. Podaję ci trzy sposoby czynienia miłosierdzia bliźnim: pierwszy – czyn, drugi – słowa, trzeci – modlitwa; w tych trzech stopniach zawiera się pełnia miłosierdzia i jest niezbitym dowodem miłości ku Mnie” (Dz. 742).

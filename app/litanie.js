@@ -8,8 +8,9 @@ import { litania3 } from './contents/litanie/litania3';
 import { litania4 } from './contents/litanie/litania4';
 import { krakowiok_pielgrzymkowy } from './contents/litanie/krakowiok-pielgrzymkowy';
 import { krakowiok_wedrowny } from './contents/litanie/krakowiok-wedrowny';
-import KrakowiokWedrownyAudio from '../assets/music/Krakowiok_wedrowny.mp3';
-import KrakowiokPielgrzymkowyAudio from '../assets/music/Krakowiok_literacki.mp3';
+
+const KrakowiokWedrownyAudio = require('../assets/music/Krakowiok_wedrowny.mp3');
+const KrakowiokPielgrzymkowyAudio = require('../assets/music/Krakowiok_literacki.mp3');
 
 const formatTime = (millis) => {
   const minutes = Math.floor(millis / 60000);
@@ -74,10 +75,13 @@ const DayContent = ({ children, isVisible, audio, isPlaying, onPlay, onPause, lo
           setDuration(status.durationMillis);
 
           // Reset the audio when it reaches the end
-          if (formatTime(status.positionMillis) === formatTime(status.durationMillis)) {
-            await audio.setPositionAsync(0);
+          if (status.positionMillis >= status.durationMillis) {
+            await sound.pauseAsync();
+            await sound.setPositionAsync(0);
             setPosition(0);
             setLocalIsPlaying(false);
+            onPause();
+            clearInterval(intervalRef.current);
           }
         }
       }
@@ -108,6 +112,9 @@ const DayContent = ({ children, isVisible, audio, isPlaying, onPlay, onPause, lo
             maximumValue={duration}
             value={position}
             onSlidingComplete={onSlidingComplete}
+            minimumTrackTintColor="#1EB1FC"
+            maximumTrackTintColor="#1EB1FC"
+            thumbTintColor="#1EB1FC"
           />
           <View style={styles.timeContainer}>
             <Text style={styles.timeText}>{formatTime(position)}</Text>
@@ -266,7 +273,7 @@ const styles = StyleSheet.create({
   },
   slider: {
     width: '100%',
-    height: 35,
+    height: 40,
   },
   timeContainer: {
     flexDirection: 'row',

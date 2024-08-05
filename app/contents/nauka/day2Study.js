@@ -1,4 +1,4 @@
-export const day2study = `
+export const day2Study = `
 Kościół karmi mnie Słowem
 
 Dzisiejszą refleksję chciałbym znów rozpocząć od misyjnego wspomnienia. Otóż, kiedy odwiedzałem siostry misjonarki w Burundi, wiele usłyszałem o lokalnych konfliktach plemiennych. Siostry wspominały zwłaszcza o krwawych walkach między dwoma spośród nich. I chociaż historie te pełne były przemocy, to jednak jedna z nich była bardzo pozytywna, a nawet wzruszająca. Mianowicie, w czasie lokalnego konfliktu szpital prowadzony przez siostry otoczyli bojownicy jednego z plemion. Przebywały w nim między innymi chore dzieci z obu zwaśnionych klanów i czuwające przy nich matki. Któregoś dnia, do jednej z nich dostał się mąż, przynosząc trochę żywności, a konkretnie – manioku. Ponieważ w tym okresie brakowało jedzenia, kobieta zaraz nakarmiła swoje dziecko i podzieliła się z jeszcze jedną matką ze swego plemienia. Po chwili jednak wstała i poszła na drugi koniec sali, gdzie przebywała matka ze zwaśnionego plemienia. Jej też podała część manioku. Mimo krwawego konfliktu trwającego za murami szpitala, matka zrozumiała matkę zmartwioną chorym i głod-nym dzieckiem…

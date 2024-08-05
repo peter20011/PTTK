@@ -1,4 +1,4 @@
-export const day3study = `
+export const day3Study = `
 Misja Kościoła
 
 Czy pamiętacie z naszej pierwszej refleksji, jakie zadanie ma Kościół – czyli my? Tak. Dawać świadectwo o zmartwychwstałym Jezusie i zanieść Jego zbawienie do każdego człowieka. Dzisiaj wracamy do tego zadania, ale zaczynając od drugiej części – od ewangelizacji.

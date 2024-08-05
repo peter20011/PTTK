@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     },
     scheduleText: {
         textAlign: 'justify',
-        fontSize: 18,
+        fontSize: 19,
         lineHeight: 28,
         marginBottom: 10,
     },

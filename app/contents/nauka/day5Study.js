@@ -1,4 +1,4 @@
-export const day5study = `
+export const day5Study = `
 Kościół karmi mnie Eucharystią
 
 Amerykański pisarz Julien Green szukał argumentów, by przyjąć wiarę katolicką. W tym celu stawał przy drzwiach jednego z kościołów i obserwował ludzi wychodzących po Mszy św. Mówił sobie, że jeśli ci ludzie rzeczywiście wierzą, to na pewno wyjdą z rozpromienionymi twarzami. Tymczasem gorzko zauważał: „Schodzą z Kalwarii i znudzeni ziewają”. Zastanawiające, prawda? Przecież oni spotkali przed chwilą Jezusa, słuchali Go i przyjęli Go do serca! Czyżby nie odczuli Jego miłości? A może trzeba postawić sprawę inaczej?

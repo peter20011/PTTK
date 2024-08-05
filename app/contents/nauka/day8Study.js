@@ -1,4 +1,4 @@
-export const day8study = `
+export const day8Study = `
 Kościół i przebaczenie grzechów
 
 Dzisiejszą refleksję rozpocznę od fragmentu świadectwa, które przeczytałem w jednym z tygodników katolickich. „W Kościele zawsze było także zło. Była pszenica, ale był i kąkol. Albo i gorsze chwasty. Przez te dwa tysiące lat swojego istnienia przeszedł różne okresy. Wiemy o wszystkich «czarnych kartach Kościoła» (notabene – też warto by się im uczciwie przyjrzeć), o schizmach, grzesznych papieżach, wojnach religijnych.

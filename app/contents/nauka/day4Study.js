@@ -1,4 +1,4 @@
-export const day4study = `
+export const day4Study = `
 W Kościele i w Ojczyźnie
 
 Dzisiaj znów zaczniemy od misyjnego wspomnienia. Kilka lat temu przyszło mi odwiedzić misję, w której kiedyś pracowałem. Dowiedziawszy się o tym, jeden z miejscowych katechistów – człowiek prawy, choć bardzo biedny – bardzo, ale to bardzo prosił mnie o pomoc finansową. Chciał bowiem kształcić swoje najmłodsze dziecko, ale po prostu nie miał za co. Niewiele myśląc, „zorganizowałem” pieniądze i przekazałem je przy naszym pierwszym spotkaniu. Jego radość była ogromna. Ale jeszcze większe było moje zdziwienie kilka dni później, kiedy tenże człowiek, chcąc wyrazić swoją ogromną wdzięczność, wręczył mi niewielki pakunek. I wiecie, co mi ofiarował? W małym zawiniątku były jego prawie nowe, czarne buty, jak my to mówimy w naszych stronach – półbuty. Tak bardzo był wdzięczny.
