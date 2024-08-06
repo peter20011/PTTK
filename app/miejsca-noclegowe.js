@@ -41,14 +41,14 @@ const MiejscaNoclegowe = () => {
   };
 
   const dayContents = {
-    'Dzień 1': day1Shelter,
-    'Dzień 2': day2Shelter,
-    'Dzień 3': day3Shelter,
-    'Dzień 4': day4Shelter,
-    'Dzień 5': day5Shelter,
-    'Dzień 6': day6Shelter,
-    'Dzień 7': day7Shelter,
-    'Dzień 8': day8Shelter,
+    'Dzień I': day1Shelter,
+    'Dzień II': day2Shelter,
+    'Dzień III': day3Shelter,
+    'Dzień IV': day4Shelter,
+    'Dzień V': day5Shelter,
+    'Dzień VI': day6Shelter,
+    'Dzień VII': day7Shelter,
+    'Dzień VIII': day8Shelter,
   };
 
   return (

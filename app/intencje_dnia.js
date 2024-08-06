@@ -39,14 +39,14 @@ const IntencjaDnia = () => {
   };
 
   const dayContents = {
-    'Dzień 1': day1Intention,
-    'Dzień 2': day2Intention,
-    'Dzień 3': day3Intention,
-    'Dzień 4': day4Intention,
-    'Dzień 5': day5Intention,
-    'Dzień 6': day6Intention,
-    'Dzień 7': day7Intention,
-    'Dzień 8': day8Intention
+    'Dzień I': day1Intention,
+    'Dzień II': day2Intention,
+    'Dzień III': day3Intention,
+    'Dzień IV': day4Intention,
+    'Dzień V': day5Intention,
+    'Dzień VI': day6Intention,
+    'Dzień VII': day7Intention,
+    'Dzień VIII': day8Intention
   };
 
   return (

@@ -201,15 +201,15 @@ const formatTime = (millis) => {
     };
   
     const dayContents = {
-      'Dzień 1': { text: day1Postac, audio: preloadedSounds['Dzień 1']?.sound },
-      'Dzień 2': { text: day2Postac, audio: preloadedSounds['Dzień 2']?.sound },
-      'Dzień 3': { text: day3Postac, audio: preloadedSounds['Dzień 3']?.sound },
-      'Dzień 4': { text: day4Postac, audio: preloadedSounds['Dzień 4']?.sound },
-      'Dzień 5': { text: day5Postac, audio: preloadedSounds['Dzień 5']?.sound },
-      'Dzień 6': { text: day6Postac, audio: preloadedSounds['Dzień 6']?.sound },
-      'Dzień 7': { text: day7Postac, audio: preloadedSounds['Dzień 7']?.sound },
-      'Dzień 8': { text: day8Postac, audio: preloadedSounds['Dzień 8']?.sound },
-      'Dzień 9': { text: day9Postac, audio: preloadedSounds['Dzień 9']?.sound },
+      'Dzień I': { text: day1Postac, audio: preloadedSounds['Dzień 1']?.sound },
+      'Dzień II': { text: day2Postac, audio: preloadedSounds['Dzień 2']?.sound },
+      'Dzień III': { text: day3Postac, audio: preloadedSounds['Dzień 3']?.sound },
+      'Dzień IV': { text: day4Postac, audio: preloadedSounds['Dzień 4']?.sound },
+      'Dzień V': { text: day5Postac, audio: preloadedSounds['Dzień 5']?.sound },
+      'Dzień VI': { text: day6Postac, audio: preloadedSounds['Dzień 6']?.sound },
+      'Dzień VII': { text: day7Postac, audio: preloadedSounds['Dzień 7']?.sound },
+      'Dzień VIII': { text: day8Postac, audio: preloadedSounds['Dzień 8']?.sound },
+      'Dzień IX': { text: day9Postac, audio: preloadedSounds['Dzień 9']?.sound },
     };
   
     return (

@@ -40,14 +40,14 @@ const ModlitwaWieczorna = () => {
   };
 
   const dayContents = {
-    'Dzień 1': day1Content,
-    'Dzień 2': day2Content,
-    'Dzień 3': day3Content,
-    'Dzień 4': day4Content,
-    'Dzień 5': day5Content,
-    'Dzień 6': day6Content,
-    'Dzień 7': day7Content,
-    'Dzień 8': day8Content,
+    'Dzień I': day1Content,
+    'Dzień II': day2Content,
+    'Dzień III': day3Content,
+    'Dzień IV': day4Content,
+    'Dzień V': day5Content,
+    'Dzień VI': day6Content,
+    'Dzień VII': day7Content,
+    'Dzień VIII': day8Content,
   };
 
   return (
