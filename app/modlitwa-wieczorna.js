@@ -51,7 +51,7 @@ const ModlitwaWieczorna = () => {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       {Object.keys(dayContents).map((day) => (
         <View key={day}>
           <DayTab

@@ -67,7 +67,7 @@ const Trasa = () => {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <TouchableOpacity onPress={() => openMapLink('https://www.google.com/maps/d/u/1/viewer?mid=1_XC6eKbZ9RZgqE7dvAybTUZqdWmgz00&ll=50.40533406621355%2C20.04202919999998&z=8')}>
         {loadingA && (
           <View style={styles.loadingContainer}>
