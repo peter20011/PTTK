@@ -4,10 +4,9 @@
     "slug": "PTTK",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon_with_white_bg.png", 
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -16,22 +15,22 @@
     ],
     "ios": {
       "supportsTablet": true,
+      "bundleIdentifier": "com.pttk.pttk",  
+      "buildNumber": "1.0.0",
       "infoPlist": {
         "NSPhotoLibraryUsageDescription": "This app needs access to your photo library to save files.",
         "NSPhotoLibraryAddUsageDescription": "This app needs access to your photo library to save files."
       }
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
+      "package": "com.pttk.pttk",  
+      "versionCode": 1,
       "permissions": [
         "READ_EXTERNAL_STORAGE",
         "WRITE_EXTERNAL_STORAGE"
       ]
     },
-    "scheme": "PTTK",
+    "scheme": "pttk",
     "web": {
       "favicon": "./assets/favicon.png"
     },
@@ -39,6 +38,12 @@
       "expo-router",
       "expo-font",
       "expo-asset"
-    ]
+    ],
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
   }
 }

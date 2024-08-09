@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Linking, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Linking, ActivityIndicator, Alert } from 'react-native';
 import { WebView } from 'react-native-webview';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import NetInfo from '@react-native-community/netinfo';
 import { trasa1Day } from './contents/trasa/trasa1Day';
 import { trasa2Day } from './contents/trasa/trasa2Day'; 
 import { trasa3Day } from './contents/trasa/trasa3Day';
@@ -40,58 +41,81 @@ const Trasa = () => {
   const [selectedDay, setSelectedDay] = useState(null);
   const [loadingA, setLoadingA] = useState(true);
   const [loadingB, setLoadingB] = useState(true);
+  const [isConnected, setIsConnected] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener((state) => {
+      setIsConnected(state.isConnected);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   const handlePress = (day) => {
     setSelectedDay(selectedDay === day ? null : day);
   };
 
   const dayContents = {
-    'Dzień I – 17.08 (sobota) ': trasa1Day,
-    'Dzień II – 18.08 (niedziela) ': trasa2Day,
-    'Dzień III – 19.08 (poniedziałek) ': trasa3Day,
+    'Dzień I – 17.08 (sobota)': trasa1Day,
+    'Dzień II – 18.08 (niedziela)': trasa2Day,
+    'Dzień III – 19.08 (poniedziałek)': trasa3Day,
     'Dzień IV – 20.08 (wtorek)': trasa4Day,
-    'Dzień V – 21.08 (środa) ': trasa5Day,
+    'Dzień V – 21.08 (środa)': trasa5Day,
     'Dzień VI – 22.08 (czwartek)': trasa6Day,
-    'Dzień VII – 23.08 (piątek) ': trasa7Day,
+    'Dzień VII – 23.08 (piątek)': trasa7Day,
     'Dzień VIII – 24.08 (sobota)': trasa8Day,
-    'Dzień IX – 25.08 (niedziela) ': trasa9Day,
+    'Dzień IX – 25.08 (niedziela)': trasa9Day,
   };
 
   const openMapLink = async (url) => {
-    try {
-      await AsyncStorage.setItem(MAP_KEY, url);
-      Linking.openURL(url);
-    } catch (error) {
-      console.error('Failed to save the map link');
+    if (isConnected) {
+      try {
+        await AsyncStorage.setItem(MAP_KEY, url);
+        Linking.openURL(url);
+      } catch (error) {
+        console.error('Failed to save the map link');
+      }
+    } else {
+      Alert.alert('Brak połączenia', 'Aby móc skorzystać z mapy, wymagane jest połączenie z internetem.');
     }
   };
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <TouchableOpacity onPress={() => openMapLink('https://www.google.com/maps/d/u/1/viewer?mid=1_XC6eKbZ9RZgqE7dvAybTUZqdWmgz00&ll=50.40533406621355%2C20.04202919999998&z=8')}>
+      <TouchableOpacity
+        onLongPress={() => openMapLink('https://www.google.com/maps/d/u/1/viewer?mid=1_XC6eKbZ9RZgqE7dvAybTUZqdWmgz00&ll=50.40533406621355%2C20.04202919999998&z=8')}
+        delayLongPress={800} // Customize the long press duration as needed
+      >
         {loadingA && (
           <View style={styles.loadingContainer}>
             <ActivityIndicator size="large" color="#0000ff" />
           </View>
         )}
-        <WebView 
+        <WebView
           source={{ uri: 'https://www.google.com/maps/d/u/1/viewer?mid=1_XC6eKbZ9RZgqE7dvAybTUZqdWmgz00&ll=50.40533406621355%2C20.04202919999998&z=8' }}
           style={styles.map}
           onLoad={() => setLoadingA(false)}
           onError={() => setLoadingA(false)}
+          scrollEnabled={true} // Allow scrolling within the map
         />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => openMapLink('https://www.google.com/maps/d/u/1/viewer?mid=1Vthu9r7dtM4HYVLyy6l5kmmktEC7Wng&ll=50.38403975713024%2C20.04202919999998&z=8')}>
+      <TouchableOpacity
+        onLongPress={() => openMapLink('https://www.google.com/maps/d/u/1/viewer?mid=1Vthu9r7dtM4HYVLyy6l5kmmktEC7Wng&ll=50.38403975713024%2C20.04202919999998&z=8')}
+        delayLongPress={800} // Customize the long press duration as needed
+      >
         {loadingB && (
           <View style={styles.loadingContainer}>
             <ActivityIndicator size="large" color="#0000ff" />
           </View>
         )}
-        <WebView 
+        <WebView
           source={{ uri: 'https://www.google.com/maps/d/u/1/viewer?mid=1Vthu9r7dtM4HYVLyy6l5kmmktEC7Wng&ll=50.38403975713024%2C20.04202919999998&z=8' }}
           style={styles.map}
           onLoad={() => setLoadingB(false)}
           onError={() => setLoadingB(false)}
+          scrollEnabled={true} // Allow scrolling within the map
         />
       </TouchableOpacity>
       {Object.keys(dayContents).map((day) => (
@@ -106,6 +130,8 @@ const Trasa = () => {
           </DayContent>
         </View>
       ))}
+      {/* Dodaj dodatkowy odstęp na końcu listy */}
+      <View style={{ height: 150 }} />
     </ScrollView>
   );
 };
@@ -114,7 +140,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: '4%',
     paddingHorizontal: '4%',
-    paddingBottom: '5%',
+    paddingBottom: '10%',  // Zwiększono margines dolny
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
